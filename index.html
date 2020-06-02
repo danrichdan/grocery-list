@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+      integrity="sha256-ECB9bbROLGm8wOoEbHcHRxlHgzGqYpDtNTgDTyDz0wg="
+      crossorigin="anonymous"
+    />
+    <style>
+      li {
+        list-style: none;
+      }
+      input {
+        margin-right: 10px;
+      }
+      a {
+        margin-left: 20px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Grocery List</h2>
+      <form id="grocery-form">
+        <input type="text" placeholder="Add Grocery Item" id="grocery" />
+        <input type="submit" value="Submit" />
+      </form>
+      <ul id="grocery-list"></ul>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
