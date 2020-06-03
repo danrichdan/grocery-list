@@ -11,11 +11,9 @@ UI.prototype.addItem = function (item) {
   const list = document.getElementById("grocery-list");
   const listItem = document.createElement("li");
   listItem.innerHTML = `
-    <li>
         <input type="checkbox" class="need"/> 
         ${item} 
-        <a href="#" class="delete">X</a>
-    </li>
+        <a href="#" class="delete">X</a> 
   `;
   list.appendChild(listItem);
 };
@@ -32,6 +30,23 @@ UI.prototype.deleteItem = function (target) {
   }
 };
 
+UI.prototype.showAlert = function (message, className) {
+  // Create div, add classes, and message text
+  const div = document.createElement("div");
+  div.className = `alert ${className}`;
+  div.appendChild(document.createTextNode(message));
+
+  // Insert into DOM
+  const container = document.querySelector(".container");
+  const form = document.querySelector("form");
+  container.insertBefore(div, form);
+
+  // Give it a time limit
+  setTimeout(function () {
+    document.querySelector(".alert").remove();
+  }, 2000);
+};
+
 // Add Grocery Event Listener
 document
   .getElementById("grocery-form")
@@ -41,8 +56,13 @@ document
     // Instantiate the UI
     const ui = new UI();
 
-    ui.addItem(item);
-    ui.clearField();
+    if (item === "") {
+      ui.showAlert("Please add a grocery item", "danger");
+    } else {
+      ui.addItem(item);
+      ui.showAlert("Grocery Item Added!", "success");
+      ui.clearField();
+    }
     e.preventDefault();
   });
 
@@ -50,5 +70,6 @@ document
 document.getElementById("grocery-list").addEventListener("click", function (e) {
   const ui = new UI();
   ui.deleteItem(e.target);
+  ui.showAlert("Grocery Item Removed!", "success");
   e.preventDefault();
 });

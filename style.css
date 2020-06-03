@@ -1,0 +1,26 @@
+li {
+  list-style: none;
+}
+
+input {
+  margin-right: 10px;
+}
+
+a {
+  margin-left: 20px;
+}
+
+.alert {
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 270px;
+}
+
+.danger {
+  background-color: rgb(247, 170, 170);
+}
+
+.success {
+  background-color: rgb(199, 250, 199);
+}
