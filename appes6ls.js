@@ -6,7 +6,7 @@ class Item {
   }
 }
 
-// UI Class Functions
+// UI Class and Methods
 class UI {
   // Add Item to DOM
   addItem(item) {
@@ -53,6 +53,7 @@ class UI {
     if (target.className === "delete") {
       target.parentElement.remove();
       this.showAlert("Grocery Item Removed!", "success");
+      Store.removeItem(target);
     }
   }
 
@@ -124,7 +125,7 @@ class Store {
       0,
       target.parentElement.textContent.length - 1
     );
-    console.log(itemText);
+
     const items = Store.getItems();
 
     items.forEach(function (item, index) {
@@ -139,8 +140,20 @@ class Store {
   }
 
   // Remove Item from LS
-  static removeItem() {
-    
+  static removeItem(target) {
+    const items = Store.getItems();
+
+    const itemText = target.parentElement.textContent.substr(
+      0,
+      target.parentElement.textContent.length - 1
+    );
+
+    items.forEach(function (item, index) {
+      if (item.item === itemText) {
+        items.splice(index, 1);
+      }
+      localStorage.setItem("items", JSON.stringify(items));
+    });
   }
 }
 
