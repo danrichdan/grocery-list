@@ -110,7 +110,7 @@ class Store {
     });
   }
 
-  // Item Item to LS
+  // Add Item to LS
   static addItemToStorage(item) {
     const items = Store.getItems();
 
